@@ -1,7 +1,7 @@
 import { GetStaticProps } from "next";
 import Head from "next/head";
+import { SubscribeButton } from "../components/SubscribeButton";
 import { stripe } from "../services/stripe";
-import { SubscribeButton } from "../SubscribeButton";
 import styles from "./home.module.scss";
 
 interface HomeProps {
@@ -49,8 +49,6 @@ export const getStaticProps: GetStaticProps = async () => {
       currency: "AUD",
     }).format(price.unit_amount / 100),
   };
-
-  console.log("product:", product);
 
   return {
     props: {
