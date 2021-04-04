@@ -51,8 +51,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       cancel_url: process.env.STRIPE_CANCEL_URL,
     });
 
-    console.log("STRIPECHECKOUTSESSION:", stripeCheckoutSession);
-
     return res.status(200).json({ sessionId: stripeCheckoutSession.id });
   } else {
     res.setHeader("allow", "POST");
