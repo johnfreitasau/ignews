@@ -17,6 +17,10 @@ export function SubscribeButton({ priceId }: SubscribeButtonProps) {
       return;
     }
 
+    // if (!session.activeSubscription) {
+    //   return;
+    // }
+
     try {
       const response = await api.post("/subscribe");
 
