@@ -18,6 +18,8 @@ interface PostPreviewProps {
 }
 
 export default function PostPreview({ post }: PostPreviewProps) {
+  console.log("CHEGOU AQUI.");
+
   const [session] = useSession();
   const router = useRouter();
 
@@ -56,13 +58,7 @@ export default function PostPreview({ post }: PostPreviewProps) {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths: [
-      {
-        params: {
-          slug: "advanced-react-hooks-deep-dive-into-useeffect-hook",
-        },
-      },
-    ],
+    paths: [],
     fallback: "blocking",
   };
 };
