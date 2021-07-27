@@ -1,10 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { useSession } from "next-auth/client";
-import { FaGithub } from "react-icons/fa";
 import { mocked } from "ts-jest/utils";
-import { isJsxText } from "typescript";
 import { SignInButton } from "../SignInButton";
-import styles from "./styles.module.scss";
 
 // jest.mock("next-auth/client", () => {
 //   return {
