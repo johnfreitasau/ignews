@@ -1,20 +1,27 @@
+import { render, screen } from "@testing-library/react";
 import { mocked } from "ts-jest/utils";
 import { getPrismicClient } from "../../../services/prismic";
-import { getStaticProps } from "../../../pages";
+import Posts, { getStaticProps } from "../../../pages/posts";
 
 const posts = [
   {
     slug: "my-new-post",
     title: "My new post",
     summary: "Post summary",
-    updatedAt: "July, 10",
+    updatedAt: "07 April 2021",
   },
 ];
 
 jest.mock("../../../services/prismic");
 
 describe("Posts page", () => {
-  it("renders correctly", async () => {
+  it("renders correctly", () => {
+    render(<Posts posts={posts} />);
+
+    expect(screen.getByText("My new post")).toBeInTheDocument();
+  });
+
+  it("loads initial data", async () => {
     const getPrismicClientMocked = mocked(getPrismicClient);
 
     getPrismicClientMocked.mockReturnValueOnce({
@@ -23,8 +30,8 @@ describe("Posts page", () => {
           {
             uid: "my-new-post",
             data: {
-              title: [{ type: "paragraph", text: "My new post" }],
-              content: "my-post-content",
+              title: [{ type: "heading", text: "My new post" }],
+              content: [{ type: "paragraph", text: "Post summary" }],
             },
             last_publication_date: "04-07-2021",
           },
@@ -41,7 +48,7 @@ describe("Posts page", () => {
               slug: "my-new-post",
               title: "My new post",
               summary: "Post summary",
-              updatedAt: "July, 10",
+              updatedAt: "07 April 2021",
             },
           ],
         },
@@ -49,36 +56,3 @@ describe("Posts page", () => {
     );
   });
 });
-
-// it("renders correctly", () => {
-//   render(
-//     <Home product={{ priceId: "fake-price-id", amount: "AUD$10.00" }} />
-//   );
-
-//   expect(screen.getByText(/AUD\$10.00/i)).toBeInTheDocument();
-// });
-
-// it("loads the initial data", async () => {
-//   const retrieveStripePricesMocked = mocked(stripe.prices.retrieve);
-
-//   retrieveStripePricesMocked.mockResolvedValueOnce({
-//     id: "fake-price-id",
-//     unit_amount: 1000,
-//   } as any);
-
-//   const response = await getStaticProps({});
-
-//   // console.log("response:", response);
-
-//   expect(response).toEqual(
-//     expect.objectContaining({
-//       props: {
-//         product: {
-//           priceId: "fake-price-id",
-//           amount: "$10.00",
-//         },
-//       },
-//     })
-//   );
-// });
-// });
