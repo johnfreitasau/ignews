@@ -41,8 +41,7 @@ export const getServerSideProps: GetServerSideProps = async ({
 }) => {
   const session = await getSession({ req });
 
-  console.log("SESSION:", session);
-
+  // console.log("SESSION:", session);
   const { slug } = params;
 
   if (!session?.activeSubscription) {
@@ -74,7 +73,6 @@ export const getServerSideProps: GetServerSideProps = async ({
   };
 
   // console.log("post:", post);
-
   return {
     props: {
       post,
