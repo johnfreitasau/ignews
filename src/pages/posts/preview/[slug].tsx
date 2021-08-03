@@ -18,8 +18,6 @@ interface PostPreviewProps {
 }
 
 export default function PostPreview({ post }: PostPreviewProps) {
-  console.log("CHEGOU AQUI.");
-
   const [session] = useSession();
   const router = useRouter();
 
