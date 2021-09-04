@@ -1,7 +1,7 @@
 import "next-auth";
 
 declare module "next-auth" {
-  interface Session {
-    activeSubscription?: object | string;
+  export interface Session {
+    activeSubscription?: object;
   }
 }

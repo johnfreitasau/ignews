@@ -51,8 +51,6 @@ export const getStaticProps: GetStaticProps = async () => {
     }
   );
 
-  // console.log("PRISMIC RESPONSE", JSON.stringify(response, null, 2));
-
   const posts = response.results.map((post) => {
     return {
       slug: post.uid,
@@ -70,8 +68,6 @@ export const getStaticProps: GetStaticProps = async () => {
       ),
     };
   });
-
-  // console.log("POSTS:", posts);
 
   return {
     props: {
