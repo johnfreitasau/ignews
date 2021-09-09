@@ -82,6 +82,13 @@ $ cp .env.example .env.local
 
 # Start project on development mode
 $ yarn dev
+
+# Login to stripe
+$ stripe login
+
+# After logging in with your Stripe account, you can begin listening for events
+$ stripe listen --forward-to localhost:3000/api/webhooks
+
 ```
 
 ## 🤔 How to contribute?
